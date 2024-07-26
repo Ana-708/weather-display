@@ -40,8 +40,8 @@ function App() {
     return () => clearInterval(timerID);
   }, []);
 
-  // if (!data) return;
-  // console.log(data);
+  if (!data) return;
+  // console.log(data.hourlyData);
   // return;
 
   return (
@@ -53,18 +53,16 @@ function App() {
       <div className="temperature-display">
         <WeatherIcon temperature="16"/>
       </div>
-
       <div className="main-data">
         <MainData temp={data.temperature} tempa={data.apparentTemperature}/>
       </div>
-      
       <div className="time-data">
         <TimeData data={`${data.time.day} - ${data.time.month} - ${data.time.year}`}
                   time={`${data.time.hour}:${data.time.minute}:${data.time.second}`}/>
 
       </div>
       <div className="forecast">
-        <Forecast />
+        <Forecast data={data.hourlyData} />
       </div>
     </div>
   );
